@@ -7,19 +7,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-
-@WebServlet("/user/logout")
-public class UserLogoutServlet2 extends HttpServlet{
+// 取得 session 變數 authcode 的內容
+@WebServlet("/get/authcode")
+public class GetAuthCodeSessionServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		req.getRequestDispatcher("/WEB-INF/view/cart/user_login.jsp").forward(req, resp);
-		
+		HttpSession session = req.getSession();
+		resp.getWriter().print(session.getAttribute("authcode"));
 		
 	}
-
-	
 	
 }

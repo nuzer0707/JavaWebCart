@@ -8,12 +8,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/")
-public class IndexServlet extends HttpServlet {
-
+@WebServlet("/product/list")
+public class ProductListServlet extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/view/cart/index.jsp").forward(req, resp);
+		// 取得所有商品
+		req.getRequestDispatcher("/WEB-INF/view/cart/product_list.jsp").forward(req, resp);
+		
 	}
 	
 }

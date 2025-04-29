@@ -34,7 +34,7 @@ public class UserRegisterServlet extends HttpServlet {
 		userRegisterService.addUser(username, password, email);
 		
 		// 發送 email
-		String emailConfirmLink = "http://localhost:8080/JavaWebCart/email/confirm?username="+username;
+		String emailConfirmLink = "http://localhost:8080/JavaWebCart/email/confirm?username=" + username;
 		emailService.sendEmail(email, emailConfirmLink);
 		
 		// 準備要給 result.jsp 的資訊

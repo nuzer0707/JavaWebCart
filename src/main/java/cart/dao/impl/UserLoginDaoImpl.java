@@ -6,18 +6,19 @@ import java.sql.SQLException;
 
 import cart.dao.UserLoginDAO;
 import cart.model.entity.User;
-import jakarta.servlet.RequestDispatcher;
 
-public class UserLoginDAOImpl extends BaseDao implements UserLoginDAO {
+public class UserLoginDaoImpl extends BaseDao implements UserLoginDAO {
 
 	@Override
 	public User findUserByName(String username) {
-		String sql = "select id ,username, hash_password ,hash_slat,email,completed from user where username=?";
-		try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-			pstmt.setString(1, sql);
-			try (ResultSet rs = pstmt.executeQuery(sql)) {
-				if (rs.next()) {
-
+		String sql = "select id, username, hash_password, hash_salt, email, completed from user where username=?";
+		try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, username);
+			// 執行查詢
+			try(ResultSet rs = pstmt.executeQuery()) {
+				// 判斷使否有資料
+				if(rs.next()) {
+					// 建立 User 物件
 					User user = new User();
 					user.setId(rs.getInt("id"));
 					user.setUsername(rs.getString("username"));
@@ -32,7 +33,7 @@ public class UserLoginDAOImpl extends BaseDao implements UserLoginDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
+	
 }

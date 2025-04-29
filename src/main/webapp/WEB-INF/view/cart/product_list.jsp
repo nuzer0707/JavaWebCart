@@ -48,7 +48,18 @@
 							</thead>
 							<tbody>
 								<!-- 商品列表 -->
-								
+								<c:forEach var="productDTO" items="${productDTOs}">
+									<tr>
+										<td>${productDTO.productId}</td>
+										<td>${productDTO.productName}</td>
+										<td>${productDTO.price}</td>
+										<td>${productDTO.qty}</td>
+										<td>${productDTO.total}</td>
+										<td>${productDTO.imageBase64}</td>
+										<td><a href="/JavaWebCart/" class="button-error pure-button">X</a></td>
+
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</fieldset>

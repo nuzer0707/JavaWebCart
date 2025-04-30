@@ -38,11 +38,12 @@ public class OrderAddCartServlet extends HttpServlet {
 
 		Integer productId = Integer.parseInt(req.getParameter("productId"));
 
-		Optional<ProductDTO> opProductDTO = productService.findAllProducts().stream()
+		Optional<ProductDTO> optProductDTO = productService.findAllProducts()
+				.stream()
 				.filter(dto -> dto.getProductId().equals(productId)).findFirst();
 
-		if (opProductDTO.isPresent()) {
-			cart.add(opProductDTO.get());
+		if (optProductDTO.isPresent()) {
+			cart.add(optProductDTO.get());
 			session.setAttribute("cart", cart);
 		}
 

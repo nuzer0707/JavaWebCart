@@ -69,4 +69,6 @@ public class ProductDAOImpl extends BaseDao implements ProductDAO {
 			e.printStackTrace();
 		}	
 	}
+	
+	
 }
